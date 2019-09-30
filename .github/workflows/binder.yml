@@ -1,0 +1,18 @@
+name: Binder
+
+on:
+  pull_request:
+    paths:
+      - '*'
+
+jobs:
+  binder:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Post binder url
+      uses: andrewmusgrave/automatic-pull-request-review@0.0.2
+      with:
+        repo-token: '${{ github.token }}'
+        event: COMMENT
+        body: '- [Binder url](https://mybinder.org/v2/gh/${{ github.repository }}/${{ github.sha }})\n
+               - [nbviewer](https://nbviewer.jupyter.org/github/${{ github.repository }}/tree/${{ github.sha }}/)'
